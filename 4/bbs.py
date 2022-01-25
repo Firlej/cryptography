@@ -99,7 +99,7 @@ def pokerTest(bits):
 	print(f"pokerTest passed: {passed}")
 
 
-def main():
+def run():
 
 	P = 2 ** 127 - 1
 	Q = 2 ** 521 - 1
@@ -126,4 +126,4 @@ def main():
 	pokerTest(bits)
 
 if __name__ == '__main__':
-	main()
+	run()
