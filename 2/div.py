@@ -18,31 +18,31 @@ def split(infile):
 	draw_a = ImageDraw.Draw(img_a)
 	draw_b = ImageDraw.Draw(img_b)
 
-	options = (('1010', '0101'),('1001', '0110'))
-
 	for x in range(w):
 		for y in range(h):
 			pixel = img.getpixel((x, y))
 			if pixel == 0:
-				combination = random.choice(options[0])
-				draw_a.point((x*2, y*2), int(combination[0]))
-				draw_a.point((x*2+1, y*2), int(combination[1]))
-				draw_b.point((x*2, y*2), int(combination[2]))
-				draw_b.point((x*2+1, y*2), int(combination[3]))
-				draw_a.point((x*2, y*2+1), int(combination[0]))
-				draw_a.point((x*2+1, y*2+1), int(combination[1]))
-				draw_b.point((x*2, y*2+1), int(combination[2]))
-				draw_b.point((x*2+1, y*2+1), int(combination[3]))
+				combination = random.choice(([1,0,0,1], [0,1,1,0]))
+				draw_a.point((x*2  , y*2  ), combination[0])
+				draw_a.point((x*2+1, y*2  ), combination[1])
+				draw_a.point((x*2  , y*2+1), combination[0])
+				draw_a.point((x*2+1, y*2+1), combination[1])
+
+				draw_b.point((x*2  , y*2  ), combination[2])
+				draw_b.point((x*2+1, y*2  ), combination[3])
+				draw_b.point((x*2  , y*2+1), combination[2])
+				draw_b.point((x*2+1, y*2+1), combination[3])
 			else:
-				combination = random.choice(options[1])
-				draw_a.point((x*2, y*2), int(combination[0]))
-				draw_a.point((x*2+1, y*2), int(combination[1]))
-				draw_b.point((x*2, y*2), int(combination[2]))
-				draw_b.point((x*2+1, y*2), int(combination[3]))
-				draw_a.point((x*2, y*2+1), int(combination[0]))
-				draw_a.point((x*2+1, y*2+1), int(combination[1]))
-				draw_b.point((x*2, y*2+1), int(combination[2]))
-				draw_b.point((x*2+1, y*2+1), int(combination[3]))
+				combination = random.choice(([1,0,1,0], [0,1,0,1]))
+				draw_a.point((x*2  , y*2  ), combination[0])
+				draw_a.point((x*2+1, y*2  ), combination[1])
+				draw_a.point((x*2  , y*2+1), combination[0])
+				draw_a.point((x*2+1, y*2+1), combination[1])
+
+				draw_b.point((x*2  , y*2  ), combination[2])
+				draw_b.point((x*2+1, y*2  ), combination[3])
+				draw_b.point((x*2  , y*2+1), combination[2])
+				draw_b.point((x*2+1, y*2+1), combination[3])
 
 	# filepath, extenstion
 	f, e = os.path.splitext(infile)
